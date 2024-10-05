@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../constants.dart';
+import '../../models/user.dart';
+import '../../providers/user_provider.dart';
 import '../../service/auth_service.dart';
 import 'widget/login_form.dart';
 
@@ -27,10 +30,16 @@ class _LoginScreenState extends State<LoginScreen> {
       final password = _passwordController.text;
 
       try {
-        await AuthService.loginUser(email, password, context);
-        // Rediriger l'utilisateur ou afficher un message de succès
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('Login successful!')));
+        final response = await AuthService.loginUser(email, password, context);
+// Récupérez le token et les informations de l'utilisateur de la réponse
+        final token = response['token'];
+        final userInfo = response['user'];
+
+        // Créez une instance de User avec les informations de l'utilisateur
+        User user = User.fromJson(userInfo);
+
+        // Utilisez Provider pour stocker l'utilisateur et le token
+        Provider.of<UserModel>(context, listen: false).setUser(user, token);
       } catch (error) {
         // Gérer les erreurs ici, par exemple :
         ScaffoldMessenger.of(context)
@@ -95,12 +104,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // Navigator.pushNamedAndRemoveUntil(
-                        //     context,
-                        //     entryPointScreenRoute,
-                        //     ModalRoute.withName(logInScreenRoute));
-                      }
+                      _login(context);
+                      print('login ......');
                     },
                     child: const Text("Se connecter",
                         style: TextStyle(

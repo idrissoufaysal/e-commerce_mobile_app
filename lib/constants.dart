@@ -43,4 +43,12 @@ final lastNameValidator = MultiValidator([
       errorText: 'Last name must contain only alphabets'),
 ]);
 
+final countryValidator = MultiValidator([
+  RequiredValidator(errorText: 'country info is required'),
+  MinLengthValidator(2,
+      errorText: 'country info must be at least 2 characters long'),
+  PatternValidator(r'^[a-zA-Z]+$',
+      errorText: 'Last name must contain only alphabets'),
+]);
+
 const pasNotMatchErrorText = "passwords do not match";

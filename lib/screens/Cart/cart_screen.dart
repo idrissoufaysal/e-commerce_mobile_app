@@ -33,7 +33,7 @@ class _CartScreenState extends State<CartScreen> {
 
     return Scaffold(
       backgroundColor: kcontentColor,
-      bottomSheet: CheckOutBox(),
+      bottomSheet:const CheckOutBox(),
       body: SafeArea(
 
           child: Column(

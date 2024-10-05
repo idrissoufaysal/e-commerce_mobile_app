@@ -21,7 +21,6 @@ class SignUpForm extends StatelessWidget {
     required this.lastnameController,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -93,11 +92,11 @@ class SignUpForm extends StatelessWidget {
 
 //enter country
           TextFormField(
-            onSaved: (emal) {
-              // Email
+            onSaved: (country) {
+              // country
             },
             controller: countryController,
-            validator: emaildValidator.call,
+            validator: countryValidator.call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
@@ -125,8 +124,8 @@ class SignUpForm extends StatelessWidget {
 
           //enter firstname
           TextFormField(
-            onSaved: (emal) {
-              // Email
+            onSaved: (firstname) {
+              // firstname
             },
             controller: firstnameController,
             validator: firstNameValidator.call,

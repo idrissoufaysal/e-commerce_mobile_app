@@ -1,16 +1,17 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:myapp/constants.dart';
 import 'dart:convert';
-
 import '../models/auth_response.dart';
 import '../models/user.dart';
 
-
 class AuthService {
-  // Méthode de connexion avec requête POST
 
-  static Future<void> loginUser(String email, String password, BuildContext context) async {
+  // Méthode de connexion avec requête POST
+  Future<Map<String, dynamic>>  loginUser(
+      String email, String password, BuildContext context) async {
     final loginUrl = Uri.parse('$apiUrl/login');
 
     try {
@@ -28,17 +29,17 @@ class AuthService {
         final authResponse = AuthResponse.fromJson(data);
 
         print('Token JWT: ${authResponse.token}');
-        
+
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login successful! Token: ${authResponse.token}')),
+          const SnackBar(content: Text('Login successful!')),
         );
+        return json.decode(response.body);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to login: ${response.body}')),
         );
       }
     } catch (e) {
-      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('An error occurred: $e')),
       );
@@ -61,7 +62,7 @@ class AuthService {
         print('User registered successfully: ${data['message']}');
 
         ScaffoldMessenger.of(context).showSnackBar(
-         const SnackBar(content: Text('Sign-up successful!')),
+          const SnackBar(content: Text('Sign-up successful!')),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

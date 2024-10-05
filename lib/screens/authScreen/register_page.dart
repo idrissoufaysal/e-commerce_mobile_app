@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
+import '../../models/user.dart';
+import '../../service/auth_service.dart';
 import 'widget/register_form.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -12,6 +14,35 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _firstnameController = TextEditingController();
+  final TextEditingController _lastnameController = TextEditingController();
+
+  void _signUp(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      final userData = User(
+        id: '',
+        email: _emailController.text,
+        firstname: _firstnameController.text,
+        lastname: _lastnameController.text,
+        password: _passwordController.text,
+        country: _countryController.text,
+        roles: [],
+        verified: false,
+      );
+
+      try {
+        await AuthService.signUpUser(userData, context);
+      
+      } catch (error) {
+        // Gérer les erreurs ici, par exemple :
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('register failed: $error')));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +70,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     "Entrez vos information pour creer un compte.",
                   ),
                   const SizedBox(height: defaultPadding),
-                  SignUpForm(formKey: _formKey),
+                  SignUpForm(
+                    formKey: _formKey,
+                    emailController: _emailController,
+                    passwordController: _passwordController,
+                    countryController: _countryController,
+                    firstnameController: _firstnameController,
+                    lastnameController: _lastnameController,
+                  ),
                   const SizedBox(height: defaultPadding),
                   Row(
                     children: [
@@ -86,15 +124,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // Navigator.pushNamedAndRemoveUntil(
-                        //     context,
-                        //     entryPointScreenRoute,
-                        //     ModalRoute.withName(signUpScreenRoute));
-                      }
+                      _signUp(context);
+                      print('register .....');
                     },
                     child: const Text(
-                      "Continue",
+                      "S'inscrire",
                       style: TextStyle(
                         color: Colors.white,
                       ),
