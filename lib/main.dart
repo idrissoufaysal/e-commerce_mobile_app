@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             textTheme: GoogleFonts.mulishTextTheme(),
           ),
-          home: SignUpScreen(),
+          home: BottomNavBar(),
           routes: {
         '/login': (context) => const LoginScreen(),
         '/signUp': (context) => const SignUpScreen()

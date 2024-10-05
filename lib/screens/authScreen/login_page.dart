@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../constants.dart';
+import '../../service/auth_service.dart';
 import 'widget/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -11,6 +12,32 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false; // Variable pour suivre l'état de chargement
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void _login(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      try {
+        await AuthService.loginUser(email, password, context);
+        // Rediriger l'utilisateur ou afficher un message de succès
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Login successful!')));
+      } catch (error) {
+        // Gérer les erreurs ici, par exemple :
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Login failed: $error')));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +65,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     "Veillez vous connecter en entrant vos informations",
                   ),
                   const SizedBox(height: defaultPadding),
-                  LogInForm(formKey: _formKey),
+                  LogInForm(
+                    formKey: _formKey,
+                    emailController: _emailController,
+                    passwordController: _passwordController,
+                  ),
                   Align(
                     child: TextButton(
                       child: const Text("Forgot password"),
@@ -54,15 +85,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 110),
-                  backgroundColor: kprimaryColor,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(18),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 110),
+                      backgroundColor: kprimaryColor,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(18),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         // Navigator.pushNamedAndRemoveUntil(
@@ -71,9 +102,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         //     ModalRoute.withName(logInScreenRoute));
                       }
                     },
-                    child: const Text("Se connecter", style: TextStyle(
-                      color: Colors.white,
-                    )),
+                    child: const Text("Se connecter",
+                        style: TextStyle(
+                          color: Colors.white,
+                        )),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -36,6 +36,7 @@ class AuthService {
         );
       }
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('An error occurred: $e')),
       );
@@ -58,7 +59,7 @@ class AuthService {
         print('User registered successfully: ${data['message']}');
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Sign-up successful!')),
+         const SnackBar(content: Text('Sign-up successful!')),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

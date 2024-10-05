@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../constants.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
   const SignUpForm({
     super.key,
     required this.formKey,
@@ -12,9 +12,20 @@ class SignUpForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
 
   @override
+  State<SignUpForm> createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+    final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _firstnameController = TextEditingController();
+  final TextEditingController _lastnameController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: widget.formKey,
       child: Column(
         children: [
           //enter email
@@ -22,6 +33,7 @@ class SignUpForm extends StatelessWidget {
             onSaved: (emal) {
               // Email
             },
+            controller: _emailController,
             validator: emaildValidator.call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
@@ -53,6 +65,7 @@ class SignUpForm extends StatelessWidget {
             onSaved: (pass) {
               // Password
             },
+            controller: _passwordController,
             validator: passwordValidator.call,
             obscureText: true,
             decoration: InputDecoration(
@@ -83,6 +96,7 @@ class SignUpForm extends StatelessWidget {
             onSaved: (emal) {
               // Email
             },
+            controller: _countryController,
             validator: emaildValidator.call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
@@ -114,6 +128,7 @@ class SignUpForm extends StatelessWidget {
             onSaved: (emal) {
               // Email
             },
+            controller: _firstnameController,
             validator: firstNameValidator.call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.name,
@@ -142,9 +157,10 @@ class SignUpForm extends StatelessWidget {
 
           //enter lastname
           TextFormField(
-            onSaved: (emal) {
-              // Email
+            onSaved: (lastname) {
+              // lastname
             },
+            controller: _lastnameController,
             validator: lastNameValidator.call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
