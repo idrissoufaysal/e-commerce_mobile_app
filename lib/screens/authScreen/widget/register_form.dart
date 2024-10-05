@@ -3,29 +3,29 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../constants.dart';
 
-class SignUpForm extends StatefulWidget {
+class SignUpForm extends StatelessWidget {
+  final GlobalKey<FormState> formKey;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final TextEditingController countryController;
+  final TextEditingController firstnameController;
+  final TextEditingController lastnameController;
+
   const SignUpForm({
     super.key,
     required this.formKey,
+    required this.emailController,
+    required this.passwordController,
+    required this.countryController,
+    required this.firstnameController,
+    required this.lastnameController,
   });
 
-  final GlobalKey<FormState> formKey;
-
-  @override
-  State<SignUpForm> createState() => _SignUpFormState();
-}
-
-class _SignUpFormState extends State<SignUpForm> {
-   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-    final TextEditingController _countryController = TextEditingController();
-  final TextEditingController _firstnameController = TextEditingController();
-  final TextEditingController _lastnameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: widget.formKey,
+      key: formKey,
       child: Column(
         children: [
           //enter email
@@ -33,7 +33,7 @@ class _SignUpFormState extends State<SignUpForm> {
             onSaved: (emal) {
               // Email
             },
-            controller: _emailController,
+            controller: emailController,
             validator: emaildValidator.call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
@@ -65,7 +65,7 @@ class _SignUpFormState extends State<SignUpForm> {
             onSaved: (pass) {
               // Password
             },
-            controller: _passwordController,
+            controller: passwordController,
             validator: passwordValidator.call,
             obscureText: true,
             decoration: InputDecoration(
@@ -96,7 +96,7 @@ class _SignUpFormState extends State<SignUpForm> {
             onSaved: (emal) {
               // Email
             },
-            controller: _countryController,
+            controller: countryController,
             validator: emaildValidator.call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
@@ -128,7 +128,7 @@ class _SignUpFormState extends State<SignUpForm> {
             onSaved: (emal) {
               // Email
             },
-            controller: _firstnameController,
+            controller: firstnameController,
             validator: firstNameValidator.call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.name,
@@ -160,7 +160,7 @@ class _SignUpFormState extends State<SignUpForm> {
             onSaved: (lastname) {
               // lastname
             },
-            controller: _lastnameController,
+            controller: lastnameController,
             validator: lastNameValidator.call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,

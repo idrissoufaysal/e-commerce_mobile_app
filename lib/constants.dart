@@ -6,7 +6,7 @@ const kcontentColor = Color(0xffF5F5F5);
 const kprimaryColor = Color(0xffff660e);
 
 //Api
-const api_url = 'https://sellerex.dracarys.tech/api';
+const apiUrl = 'https://sellerex.dracarys.tech/api';
 
 const Color primaryColor = Color(0xFF7B61FF);
 const double defaultPadding = 16.0;

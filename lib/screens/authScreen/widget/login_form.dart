@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../constants.dart';
 
-class LogInForm extends StatefulWidget {
+class LogInForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -16,21 +16,14 @@ class LogInForm extends StatefulWidget {
   });
 
   @override
-  State<LogInForm> createState() => _LogInFormState();
-}
-
-class _LogInFormState extends State<LogInForm> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  @override
   Widget build(BuildContext context) {
     return Form(
-      key: widget.formKey,
+      key: formKey,
       child: Column(
         children: [
           //enter email
           TextFormField(
-            controller: _emailController,
+            controller: emailController,
             onSaved: (emal) {
               // Email
             },
@@ -61,7 +54,7 @@ class _LogInFormState extends State<LogInForm> {
 
           //enter password
           TextFormField(
-            controller: _passwordController,
+            controller: passwordController,
             onSaved: (pass) {
               // Password
             },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:myapp/constants.dart';
 import 'dart:convert';
 
 import '../models/auth_response.dart';
@@ -8,12 +9,13 @@ import '../models/user.dart';
 
 class AuthService {
   // Méthode de connexion avec requête POST
+
   static Future<void> loginUser(String email, String password, BuildContext context) async {
-    final url = Uri.parse('https://votre-backend.com/api/login');
+    final loginUrl = Uri.parse('$apiUrl/login');
 
     try {
       final response = await http.post(
-        url,
+        loginUrl,
         headers: {"Content-Type": "application/json"},
         body: json.encode({
           'email': email,
@@ -45,11 +47,11 @@ class AuthService {
 
   // Méthode d'inscription avec requête POST
   static Future<void> signUpUser(User userData, BuildContext context) async {
-    final url = Uri.parse('https://votre-backend.com/api/signup');
+    final signUpUrl = Uri.parse('$apiUrl/register');
 
     try {
       final response = await http.post(
-        url,
+        signUpUrl,
         headers: {"Content-Type": "application/json"},
         body: json.encode(userData.toJson()),
       );
