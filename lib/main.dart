@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/home.dart';
 
 import 'screens/na_bar_screen.dart';
 

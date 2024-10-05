@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../models/products.dart';
 import '../../../providers/favorite_provider.dart';
-import '../../Detail/detail_screen.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -16,12 +15,12 @@ class ProductCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => DetailScreen(product: product),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(product: product),
+          ),
+        );
       },
       child: Stack(
         children: [

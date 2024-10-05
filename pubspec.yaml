@@ -63,6 +63,12 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+    - images/all/
+    - images/shoes/
+    - images/beauty/
+    - images/women fashion/
+    - images/men fashion/
+    - images/jewelry/ 
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
