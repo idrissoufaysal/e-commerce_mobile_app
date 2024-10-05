@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-
 import '../../constants.dart';
 import '../../models/products.dart';
 import 'widget/addto_cart.dart';
