@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/constants.dart';
-import 'package:myapp/screens/Cart/cart_screen.dart';
-import 'package:myapp/screens/Home/home_screen.dart';
+import '/constants.dart';
+import 'Cart/cart_screen.dart';
+import 'Home/home_screen.dart';
 import 'Favorite/favorite.dart';
+import 'profile/profile.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
