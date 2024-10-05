@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/screens/authScreen/login_page.dart';
+import 'package:myapp/screens/authScreen/register_page.dart';
 import 'providers/cart_provider.dart';
 import 'providers/favorite_provider.dart';
 import 'screens/na_bar_screen.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             textTheme: GoogleFonts.mulishTextTheme(),
           ),
-          home: const BottomNavBar(),
+          home: SignUpScreen(),
         ),
       );
 }

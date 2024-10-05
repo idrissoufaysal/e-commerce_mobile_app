@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/route/route_constants.dart';
+import '../../constants.dart';
+import 'widget/login_form.dart';
 
-import 'components/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -46,8 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextButton(
                       child: const Text("Forgot password"),
                       onPressed: () {
-                        Navigator.pushNamed(
-                            context, passwordRecoveryScreenRoute);
+                        // Navigator.pushNamed(
+                        //     context, passwordRecoveryScreenRoute);
                       },
                     ),
                   ),
@@ -59,10 +57,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context,
-                            entryPointScreenRoute,
-                            ModalRoute.withName(logInScreenRoute));
+                        // Navigator.pushNamedAndRemoveUntil(
+                        //     context,
+                        //     entryPointScreenRoute,
+                        //     ModalRoute.withName(logInScreenRoute));
                       }
                     },
                     child: const Text("Log in"),
@@ -73,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const Text("Don't have an account?"),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, signUpScreenRoute);
+                         // Navigator.pushNamed(context, signUpScreenRoute);
                         },
                         child: const Text("Sign up"),
                       )

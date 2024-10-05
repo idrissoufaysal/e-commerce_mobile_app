@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
+
+//FIRST ITEMS//1
 const kcontentColor = Color(0xffF5F5F5);
 const kprimaryColor = Color(0xffff660e);
 
-import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 
 // Just for demo
 const productDemoImg1 = "https://i.imgur.com/CGCyp1d.png";
