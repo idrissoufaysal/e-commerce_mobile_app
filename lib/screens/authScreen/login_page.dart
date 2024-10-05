@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 import 'widget/login_form.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -22,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             Image.asset(
-              "assets/images/login_dark.png",
+              "images/login_dark.png",
               fit: BoxFit.cover,
             ),
             Padding(
@@ -36,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: defaultPadding / 2),
                   const Text(
-                    "Log in with your data that you intered during your registration.",
+                    "Veillez vous connecter en entrant vos informations",
                   ),
                   const SizedBox(height: defaultPadding),
                   LogInForm(formKey: _formKey),
@@ -50,11 +49,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: size.height > 700
-                        ? size.height * 0.1
-                        : defaultPadding,
+                    height:
+                        size.height > 700 ? size.height * 0.1 : defaultPadding,
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 110),
+                  backgroundColor: kprimaryColor,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(18),
+                    ),
+                  ),
+                ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         // Navigator.pushNamedAndRemoveUntil(
@@ -63,17 +71,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         //     ModalRoute.withName(logInScreenRoute));
                       }
                     },
-                    child: const Text("Log in"),
+                    child: const Text("Se connecter", style: TextStyle(
+                      color: Colors.white,
+                    )),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Don't have an account?"),
+                      const Text("vous n'avez pas de compte?"),
                       TextButton(
                         onPressed: () {
-                         // Navigator.pushNamed(context, signUpScreenRoute);
+                          Navigator.pushNamed(context, '/signUp');
                         },
-                        child: const Text("Sign up"),
+                        child: const Text("Inscrivez-vous"),
                       )
                     ],
                   ),

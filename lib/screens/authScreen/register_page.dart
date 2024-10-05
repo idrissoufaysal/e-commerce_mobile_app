@@ -20,7 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Column(
           children: [
             Image.asset(
-              "assets/images/signUp_dark.png",
+              "images/signUp_dark.png",
               height: MediaQuery.of(context).size.height * 0.35,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -36,7 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   const SizedBox(height: defaultPadding / 2),
                   const Text(
-                    "Please enter your valid data in order to create an account.",
+                    "Entrez vos information pour creer un compte.",
                   ),
                   const SizedBox(height: defaultPadding),
                   SignUpForm(formKey: _formKey),
@@ -75,23 +75,40 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   const SizedBox(height: defaultPadding * 2),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 110),
+                      backgroundColor: kprimaryColor,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(18),
+                        ),
+                      ),
+                    ),
                     onPressed: () {
-                      // There is 2 more screens while user complete their profile
-                      // afre sign up, it's available on the pro version get it now
-                      // 🔗 https://theflutterway.gumroad.com/l/fluttershop
-                      // Navigator.pushNamed(context, entryPointScreenRoute);
+                      if (_formKey.currentState!.validate()) {
+                        // Navigator.pushNamedAndRemoveUntil(
+                        //     context,
+                        //     entryPointScreenRoute,
+                        //     ModalRoute.withName(signUpScreenRoute));
+                      }
                     },
-                    child: const Text("Continue"),
+                    child: const Text(
+                      "Continue",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Do you have an account?"),
+                      const Text("vous avez dejas un compte?"),
                       TextButton(
                         onPressed: () {
-                          // Navigator.pushNamed(context, logInScreenRoute);
+                          Navigator.pushNamed(context, '/login');
                         },
-                        child: const Text("Log in"),
+                        child: const Text("connectez-vous"),
                       )
                     ],
                   ),

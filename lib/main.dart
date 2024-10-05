@@ -22,12 +22,17 @@ class MyApp extends StatelessWidget {
           // for favorite
           ChangeNotifierProvider(create: (_) => FavoriteProvider()),
         ],
+
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             textTheme: GoogleFonts.mulishTextTheme(),
           ),
           home: SignUpScreen(),
+          routes: {
+        '/login': (context) => const LoginScreen(),
+        '/signUp': (context) => const SignUpScreen()
+      },
         ),
       );
 }

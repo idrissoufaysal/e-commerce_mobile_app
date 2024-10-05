@@ -17,6 +17,7 @@ class SignUpForm extends StatelessWidget {
       key: formKey,
       child: Column(
         children: [
+          //enter email
           TextFormField(
             onSaved: (emal) {
               // Email
@@ -46,6 +47,8 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: defaultPadding),
+
+          //enter password
           TextFormField(
             onSaved: (pass) {
               // Password
@@ -59,6 +62,99 @@ class SignUpForm extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: defaultPadding * 0.75),
                 child: SvgPicture.asset(
                   "assets/icons/Lock.svg",
+                  height: 24,
+                  width: 24,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .color!
+                        .withOpacity(0.3),
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: defaultPadding),
+
+//enter country
+          TextFormField(
+            onSaved: (emal) {
+              // Email
+            },
+            validator: emaildValidator.call,
+            textInputAction: TextInputAction.next,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              hintText: "country address",
+              prefixIcon: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: defaultPadding * 0.75),
+                child: SvgPicture.asset(
+                  "assets/icons/Message.svg",
+                  height: 24,
+                  width: 24,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .color!
+                        .withOpacity(0.3),
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: defaultPadding),
+
+          //enter firstname
+          TextFormField(
+            onSaved: (emal) {
+              // Email
+            },
+            validator: firstNameValidator.call,
+            textInputAction: TextInputAction.next,
+            keyboardType: TextInputType.name,
+            decoration: InputDecoration(
+              hintText: "Nom",
+              prefixIcon: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: defaultPadding * 0.75),
+                child: SvgPicture.asset(
+                  "assets/icons/Message.svg",
+                  height: 24,
+                  width: 24,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .color!
+                        .withOpacity(0.3),
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: defaultPadding),
+
+          //enter lastname
+          TextFormField(
+            onSaved: (emal) {
+              // Email
+            },
+            validator: lastNameValidator.call,
+            textInputAction: TextInputAction.next,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              hintText: "Prenom",
+              prefixIcon: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: defaultPadding * 0.75),
+                child: SvgPicture.asset(
+                  "assets/icons/Message.svg",
                   height: 24,
                   width: 24,
                   colorFilter: ColorFilter.mode(

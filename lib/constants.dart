@@ -74,7 +74,7 @@ const Duration defaultDuration = Duration(milliseconds: 300);
 
 final passwordValidator = MultiValidator([
   RequiredValidator(errorText: 'Password is required'),
-  MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
+  MinLengthValidator(4, errorText: 'password must be at least 4 digits long'),
   PatternValidator(r'(?=.*?[#?!@$%^&*-])',
       errorText: 'passwords must have at least one special character')
 ]);
@@ -82,6 +82,22 @@ final passwordValidator = MultiValidator([
 final emaildValidator = MultiValidator([
   RequiredValidator(errorText: 'Email is required'),
   EmailValidator(errorText: "Enter a valid email address"),
+])
+
+
+
+// Validateur de prénom
+final firstNameValidator = MultiValidator([
+  RequiredValidator(errorText: 'First name is required'),
+  MinLengthValidator(2, errorText: 'First name must be at least 2 characters long'),
+  PatternValidator(r'^[a-zA-Z]+$', errorText: 'First name must contain only alphabets'),
+]);
+
+// Validateur de nom
+final lastNameValidator = MultiValidator([
+  RequiredValidator(errorText: 'Last name is required'),
+  MinLengthValidator(2, errorText: 'Last name must be at least 2 characters long'),
+  PatternValidator(r'^[a-zA-Z]+$', errorText: 'Last name must contain only alphabets'),
 ]);
 
 const pasNotMatchErrorText = "passwords do not match";
