@@ -53,11 +53,11 @@ class ProductCard extends StatelessWidget {
                     product.title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 12,
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                //const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

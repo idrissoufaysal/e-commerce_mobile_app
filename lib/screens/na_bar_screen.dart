@@ -6,6 +6,7 @@ import 'Favorite/favorite.dart';
 import 'profile/profile.dart';
 
 class BottomNavBar extends StatefulWidget {
+  
   const BottomNavBar({super.key});
 
   @override

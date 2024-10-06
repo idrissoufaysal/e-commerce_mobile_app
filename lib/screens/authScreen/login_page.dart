@@ -25,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _login(BuildContext context) async {
+    final userModel = Provider.of<UserModel>(context, listen: false);
     if (_formKey.currentState!.validate()) {
       final email = _emailController.text;
       final password = _passwordController.text;
@@ -37,9 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
         // Créez une instance de User avec les informations de l'utilisateur
         User user = User.fromJson(userInfo);
-
+        print("je suis ici");
+        print(userModel.user); // Pour débogage@@
         // Utilisez Provider pour stocker l'utilisateur et le token
         Provider.of<UserModel>(context, listen: false).setUser(user, token);
+        Navigator.pushReplacementNamed(context, '/bottomNavBar');
       } catch (error) {
         // Gérer les erreurs ici, par exemple :
         ScaffoldMessenger.of(context)

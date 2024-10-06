@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../models/category.dart';
 import '../../models/products.dart';
+import '../../providers/user_provider.dart';
+import '../../service/auth_service.dart';
 import 'widgets/home_app_bar.dart';
 import 'widgets/image_slider.dart';
 import 'widgets/product_cart.dart';
@@ -13,11 +16,39 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+
 class _HomeScreenState extends State<HomeScreen> {
   int currentSlider = 0;
   int selectedIndex = 0;
+    late Future<List<Product>> _productsFuture;
+
+   @override
+  void initState() {
+    super.initState();
+    // Récupérez le token depuis le Provider
+    final userModel = Provider.of<UserModel>(context, listen: false);
+    final token = userModel.token;
+
+    // Initialisez la Future pour récupérer les produits
+  //  _productsFuture = ProductService.fetchProducts(token)
+  }
+
+
+
+  void fetchProductData() async {
+  try {
+   // List<Product> products = await AuthService.fetchProducts(token);
+   // print(products); // Affiche la liste des produits récupérés
+  } catch (error) {
+    print('Erreur lors de la récupération des produits : $error');
+  }
+}
+
+
   @override
   Widget build(BuildContext context) {
+        final userInfo = Provider.of<UserModel>(context, listen: false);
+        final token=userInfo.token;
     List<List<Product>> selectcategories = [
       all,
       shoes,
